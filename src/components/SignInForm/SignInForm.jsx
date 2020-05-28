@@ -1,13 +1,18 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
+import { authenticateUser } from '../../redux';
 import * as API from '../../services/api';
 
 const SignInForm = () => {
+
+    const dispatch = useDispatch();
 
     const submit = (e) => {
       e.preventDefault();
       let email = document.getElementById('email').value;
       let password = document.getElementById('password').value;
-      API.SignInRequest(email, password)
+      API.SignInRequest(email, password);
+      dispatch(authenticateUser())
     }
 
     return (

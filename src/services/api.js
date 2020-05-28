@@ -1,6 +1,5 @@
-import React from 'react';
 import Cookies from 'js-cookie';
-import jwt_decode from 'jwt-decode';
+import { useDispatch } from 'react-redux';
 
 export const Logout = () => {
   Cookies.remove('token');
@@ -20,8 +19,6 @@ export const SignInRequest = (identifier, password) => {
     identifier: identifier,
     password: password
   }
-
-  var user_token = Cookies.get('token')
 
   fetch('https://api-minireseausocial.mathis-dyk.fr/auth/local/', {
     method: 'post',
@@ -69,7 +66,23 @@ export const MyProfileRequest = () => {
   })
   .then(response => response.json())
   .then(response => {
-    console.log(response);
+    return response
+  })
+}
+
+export const ModifyProfileRequest = () => {
+
+  var user_token = Cookies.get('token')
+
+  return fetch('https://api-minireseausocial.mathis-dyk.fr/users/me', {
+    method: 'put',
+    headers: {
+      'Authorization': `Bearer ${user_token}`,
+      'Content-Type': 'application/json'
+    }
+  })
+  .then(response => response.json())
+  .then(response => {
     return response
   })
 }

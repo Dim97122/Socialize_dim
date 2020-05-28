@@ -1,10 +1,19 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import {useSelector, useDispatch} from 'react-redux';
+import { logoutUser } from '../../../redux';
 import * as API from '../../../services/api';
 
 
 
 const GlobalNavbar = () => {
+  const user = useSelector(state => state.user);
+  const dispatch = useDispatch();
+
+  const disconnectUser = ()=> {
+    API.Logout();
+    dispatch(logoutUser())
+  }
 
   return (
     <>
@@ -19,10 +28,11 @@ const GlobalNavbar = () => {
           <Link to="/signin">
             <div className="nav-item nav-link">Connexion </div>
           </Link>
-          <div className="nav-item nav-link" onClick={()=> API.Logout()}>Déconnexion</div>
+          <div className="nav-item nav-link" onClick={()=> disconnectUser()}>Déconnexion</div>
           <Link to="/profile">
             <div className="nav-item nav-link">Profil</div>
           </Link>
+          <div>Statut connexion : {user}</div>
         </div>
       </nav>
     </>

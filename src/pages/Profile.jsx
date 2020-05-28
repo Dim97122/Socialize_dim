@@ -3,7 +3,6 @@ import * as API from '../services/api';
 
 const Profile = () => {
   const [userName, setUserName] = useState()
-  var user
 
   useEffect(() => {
     API.MyProfileRequest()
