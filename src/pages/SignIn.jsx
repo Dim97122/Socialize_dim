@@ -1,7 +1,12 @@
 import React from 'react';
+import {useSelector} from 'react-redux';
 import SignInForm from '../components/SignInForm'
 
 const SignIn = () => {
+  const user = useSelector(state => state.user);
+  if (user === "authenticated") {
+
+  }
 
   return (
     <>

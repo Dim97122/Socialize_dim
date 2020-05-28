@@ -11,6 +11,8 @@ import Home from '../../pages/Home';
 import Register from '../../pages/Register';
 import SignIn from '../../pages/SignIn';
 import Profile from '../../pages/Profile';
+import NewPost from '../../pages/NewPost';
+
 import 'bootstrap/dist/css/bootstrap.css';
 
 const App = () => {
@@ -21,6 +23,9 @@ const App = () => {
         < Router >
         < GlobalNavbar/>
           < Switch >
+            < Route path="/new_post">
+              < NewPost />
+            </ Route>
             < Route path="/profile">
               < Profile />
             </ Route>
