@@ -1,9 +1,12 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { authenticateUser } from '../../redux';
-import * as API from '../../services/api';
+import Cookies from 'js-cookie';
+import * as UsersAPI from 'services/Users';
 
 const SignInForm = () => {
+
+  const token = Cookies.get("token");
 
   const dispatch = useDispatch();
 
@@ -11,8 +14,8 @@ const SignInForm = () => {
     e.preventDefault();
     let email = document.getElementById('email').value;
     let password = document.getElementById('password').value;
-    API.SignInRequest(email, password);
-    dispatch(authenticateUser())
+    UsersAPI.SignInRequest(email, password);
+    dispatch(authenticateUser(token))
   }
 
   return (
@@ -20,7 +23,7 @@ const SignInForm = () => {
       <div>
         <form className="form p-4 mt-3 mb-3 rounded" onSubmit={submit}>
           <div className="form-group">
-            <label htmlFor="email">Email address:</label>
+            <label htmlFor="email">Email ou Username</label>
             <input type="email" className="form-control" placeholder="Enter email" id="email" />
           </div>
           <div className="form-group">

@@ -3,8 +3,8 @@ import {useSelector} from 'react-redux';
 import NewPostForm from '../components/NewPostForm'
 
 const NewPost = () => {
-  const user = useSelector(state => state.user);
-  if (user === "authenticated") {
+  const token = useSelector(state => state.token);
+  if (token !== undefined) {
     return (
       <>
         <h1>Nouveau Post</h1>

@@ -6,12 +6,12 @@ import {
   Route,
   Switch,
 } from "react-router-dom";
-import GlobalNavbar from '../Navbar/GlobalNavbar'
-import Home from '../../pages/Home';
-import Register from '../../pages/Register';
-import SignIn from '../../pages/SignIn';
-import Profile from '../../pages/Profile';
-import NewPost from '../../pages/NewPost';
+import GlobalNavbar from 'components/Navbar/GlobalNavbar'
+import Home from 'pages/Home';
+import Register from 'pages/Register';
+import SignIn from 'pages/SignIn';
+import Profile from 'pages/Profile';
+import NewPost from 'pages/NewPost';
 
 import 'bootstrap/dist/css/bootstrap.css';
 

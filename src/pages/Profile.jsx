@@ -13,6 +13,7 @@ const Profile = () => {
     <>
       <div>
         <h1>YO WELCOME {userName} ON YA PROFILE !</h1>
+        
       </div>
     </>
   )

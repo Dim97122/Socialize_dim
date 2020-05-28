@@ -1,21 +1,24 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { Link } from 'react-router-dom';
 import {useSelector, useDispatch} from 'react-redux';
 import { logoutUser } from '../../../redux';
-import * as API from '../../../services/api';
-
+import * as UsersAPI from 'services/Users';
 
 
 const GlobalNavbar = () => {
-  const user = useSelector(state => state.user);
+  const token = useSelector(state => state.token);
   const dispatch = useDispatch();
 
   const disconnectUser = ()=> {
-    API.Logout();
+    UsersAPI.Logout();
     dispatch(logoutUser())
   }
 
-  if (user === "authenticated") {
+  useEffect(() => {
+
+  }, [])
+
+  if ( token !== undefined ) {
     return (
       <>
         <nav className="navbar navbar-expand-lg navbar-light bg-light d-flex justify-content-around">
@@ -26,11 +29,11 @@ const GlobalNavbar = () => {
             <Link to="/new_post">
               <div className="nav-item nav-link">New Post</div>
             </Link>
-            <button href className="nav-item nav-link" onClick={()=> disconnectUser()}>Déconnexion</button>
+            <button className="nav-item nav-link" onClick={()=> disconnectUser()}>Déconnexion</button>
             <Link to="/profile">
               <div className="nav-item nav-link">Profil</div>
             </Link>
-            <div>Statut connexion : {user}</div>
+            <div>Connecté</div>
           </div>
         </nav>
       </>
@@ -50,7 +53,7 @@ const GlobalNavbar = () => {
           <Link to="/signin">
             <div className="nav-item nav-link">Connexion </div>
           </Link>
-          <div>Statut connexion : {user}</div>
+          <div>Non connecté</div>
         </div>
       </nav>
     </>
